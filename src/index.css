@@ -102,7 +102,7 @@ html, body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Apple-style Scroll Snap Sections */
+/* Apple-style Scroll Snap Sections (Desktop) */
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -119,13 +119,22 @@ html, body {
   overflow: hidden;
 }
 
-@media (max-height: 750px) {
+/* Mobile & Tablet Responsiveness: Prevent text truncation & card cutoff */
+@media (max-width: 992px) {
+  .app-main-layout {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: none !important;
+  }
+
   .snap-section {
-    height: auto;
-    min-height: 100vh;
-    padding-top: 5.5rem;
-    padding-bottom: 3.5rem;
-    overflow-y: visible;
+    height: auto !important;
+    min-height: auto !important;
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    padding-top: 5.5rem !important;
+    padding-bottom: 3rem !important;
+    overflow: visible !important;
   }
 }
 
