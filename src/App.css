@@ -769,6 +769,24 @@
   color: var(--text-muted);
 }
 
+/* Mobile Menu Toggle Button (Base: hidden on desktop) */
+.mobile-menu-toggle-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hover);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  z-index: 1001;
+}
+
 /* Media Queries & Mobile Polish */
 @media (max-width: 992px) {
   .cards-grid-3 {
@@ -793,10 +811,13 @@
     align-items: center;
   }
   .mobile-menu-toggle-btn {
-    display: flex;
+    display: flex !important;
   }
   .desktop-only-btn {
-    display: none;
+    display: none !important;
+  }
+  .nav-links-desktop {
+    display: none !important;
   }
 }
 
@@ -826,12 +847,13 @@
   }
 
   .mobile-menu-toggle-btn {
+    display: flex !important;
     width: 36px !important;
     height: 36px !important;
-    background: var(--bg-card);
-    border: 1px solid var(--border-hover);
-    color: var(--text-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-hover) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
   }
 
   .hero-h1 {
@@ -901,21 +923,6 @@
 }
 
 /* Mobile Drawer Overlay */
-.mobile-menu-toggle-btn {
-  display: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-hover);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  flex-shrink: 0;
-}
-
 .mobile-drawer-overlay {
   position: fixed;
   top: 65px;
