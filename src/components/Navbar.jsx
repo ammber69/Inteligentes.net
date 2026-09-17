@@ -113,7 +113,7 @@ export const Navbar = ({ onOpenModal }) => {
         </nav>
 
         {/* Right CTA Actions & Theme Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
           <ThemeToggleButton />
 
           <button className="btn-primary desktop-only-btn" onClick={onOpenModal}>
