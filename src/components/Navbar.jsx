@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, MapPin, Bot, ChevronDown, ArrowRight, Menu, X } from 'lucide-react';
+import { Search, MapPin, Bot, ChevronDown, ArrowRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import logoImg from '../assets/logo.jpeg';
 import { ThemeToggleButton } from './ThemeToggleButton';
@@ -41,21 +41,30 @@ export const Navbar = ({ onOpenModal }) => {
   return (
     <header className={`navbar-wrapper ${scrolled ? 'scrolled' : ''}`}>
       <div className="container-custom nav-container">
-        {/* Brand Logo */}
-        <a href="#" className="brand-logo" onClick={scrollToTop}>
+        {/* Brand Logo — flex-shrink:1 + min-width:0 so it yields space to buttons */}
+        <a 
+          href="#" 
+          className="brand-logo" 
+          onClick={scrollToTop}
+          style={{ minWidth: 0, flexShrink: 1, overflow: 'hidden' }}
+        >
           <img 
             src={logoImg} 
             alt="inteligentes.net logo" 
             style={{ 
-              width: '38px', 
-              height: '38px', 
+              width: '36px', 
+              height: '36px', 
+              minWidth: '36px',
               borderRadius: '10px', 
               objectFit: 'cover',
+              flexShrink: 0,
               border: '1px solid var(--border-accent)',
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
             }} 
           />
-          <span>inteligentes<span className="gradient-text-blue">.net</span></span>
+          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            inteligentes<span className="gradient-text-blue">.net</span>
+          </span>
         </a>
 
         {/* Desktop Navigation Links */}
@@ -112,21 +121,31 @@ export const Navbar = ({ onOpenModal }) => {
           <a href="#contact" className="nav-item">Contacto</a>
         </nav>
 
-        {/* Right CTA Actions & Theme Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
+        {/* Right CTA Actions & Theme Toggle — NEVER shrink below button sizes */}
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '0.4rem', 
+          flexShrink: 0,
+          minWidth: 0
+        }}>
           <ThemeToggleButton />
 
           <button className="btn-primary desktop-only-btn" onClick={onOpenModal}>
             Diagnóstico Gratis <ArrowRight size={16} />
           </button>
 
-          {/* Mobile Menu Hamburger Toggle */}
+          {/* Mobile Menu Hamburger Toggle — Animated CSS morph to X */}
           <button 
-            className="mobile-menu-toggle-btn"
+            className={`mobile-menu-toggle-btn ${mobileMenuOpen ? 'is-open' : ''}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
+            aria-expanded={mobileMenuOpen}
+            style={{ flexShrink: 0 }}
           >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            <span className="hamburger-bar bar-top" />
+            <span className="hamburger-bar bar-middle" />
+            <span className="hamburger-bar bar-bottom" />
           </button>
         </div>
       </div>
