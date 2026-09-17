@@ -34,13 +34,13 @@ export const DiagnosticModal = ({ isOpen, onClose }) => {
 
         {!submitted ? (
           <>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem', paddingRight: '2rem' }}>
               <img 
                 src={logoImg} 
                 alt="Logo" 
-                style={{ width: '36px', height: '36px', borderRadius: '8px', objectFit: 'cover' }} 
+                style={{ width: '36px', height: '36px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} 
               />
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 700 }}>Diagnóstico Gratis de Visibilidad</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, lineHeight: 1.25 }}>Diagnóstico Gratis de Visibilidad</h3>
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1.75rem' }}>
               Analizamos tu negocio en Google Search, Maps e Inteligencia Artificial sin costo.
