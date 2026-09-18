@@ -7,14 +7,17 @@
   z-index: 1000;
   padding: 1rem 0;
   transition: var(--transition-smooth);
+  overflow: visible; /* CRITICAL: allows dropdown to paint outside navbar bounds */
 }
 
 .navbar-wrapper.scrolled {
   padding: 0.6rem 0;
   background: var(--bg-glass);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
+  overflow: visible; /* backdrop-filter creates stacking context — keep visible */
 }
 
 .nav-container {
@@ -75,7 +78,7 @@
 
 /* Mega Menu Dropdown */
 .nav-dropdown-wrap {
-  position: relative;
+  position: relative; /* Anchor for the absolute dropdown */
 }
 
 .dropdown-trigger {
